@@ -3,6 +3,8 @@
 const typingText = document.querySelector("#typingText p");
 const inputFiled = document.querySelector("#inputField");
 
+let charPos = 0;
+
 function randomParagraph() {
   //generates a random number that returns a text from the paragraphs array
   let randId = Math.floor(Math.random() * paragraphs.length);
@@ -27,6 +29,18 @@ randomParagraph();
 
 inputFiled.addEventListener("input", () => {
   const characters = typingText.querySelectorAll("span");
-  let typedChar = inputFiled.value.split("");
-  console.log(typedChar);
+  let typedChar = inputFiled.value.split("")[charPos];
+  /*
+  if the user types the correct character, the tag will receive the class 
+  "correct", otherwise, it will receive the class "incorrect";
+  */
+  if(characters[charPos].innerText === typedChar){
+    // console.log("correct");
+    characters[charPos].classList.add("correct");
+  } else{
+    // console.log("incorrect");
+    characters[charPos].classList.add("incorrect");
+
+  }
+  charPos++; //will increment if the character is right or wrong
 });
