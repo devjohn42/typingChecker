@@ -46,6 +46,31 @@ body {
   color: #3C4048;
 }
 
+.typingText p span{
+  position: relative;
+}
+
+.typingText p span.active{
+  color: #00ABB3;
+}
+
+.typingText p span.active::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  opacity: 0;
+  background: #00ABB3;
+  animation: blink 1s ease-in-out infinite;
+}
+@keyframes blink{
+  50%{
+    opacity: 1;
+  }
+}
+
 .typingText p span.correct{
   color: #55bd49;
   outline: 1px solid #EAEAEA;

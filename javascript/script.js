@@ -42,5 +42,9 @@ inputFiled.addEventListener("input", () => {
     characters[charPos].classList.add("incorrect");
 
   }
+
   charPos++; //will increment if the character is right or wrong
+  //remove the class to pass it to the next span
+  characters.forEach(span => span.classList.remove("active"));
+  characters[charPos].classList.add("active");
 });
