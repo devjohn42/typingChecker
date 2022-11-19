@@ -34,16 +34,22 @@ inputFiled.addEventListener("input", () => {
   if the user types the correct character, the tag will receive the class 
   "correct", otherwise, it will receive the class "incorrect";
   */
-  if(characters[charPos].innerText === typedChar){
-    // console.log("correct");
-    characters[charPos].classList.add("correct");
-  } else{
-    // console.log("incorrect");
-    characters[charPos].classList.add("incorrect");
+  if (typedChar == null) {
+    //going back one position and removing the char class
+    charPos--;
+    characters[charPos].classList.remove("correct", "incorrect")
+  } else {
+    if (characters[charPos].innerText === typedChar) {
+      // console.log("correct");
+      characters[charPos].classList.add("correct");
+    } else {
+      // console.log("incorrect");
+      characters[charPos].classList.add("incorrect");
+    }
 
+    charPos++; //will increment if the character is right or wrong
   }
 
-  charPos++; //will increment if the character is right or wrong
   //remove the class to pass it to the next span
   characters.forEach(span => span.classList.remove("active"));
   characters[charPos].classList.add("active");
