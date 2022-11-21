@@ -31,6 +31,7 @@ function randomParagraph() {
     let spanTag = `<span>${span}</span>`;
     typingText.innerHTML += spanTag;
   });
+  //the first character is active with the underline
   typingText.querySelectorAll("span")[0].classList.add("active");
   //makes the input field focus on the keystroke or click event
   document.addEventListener("keydown", () => inputFiled.focus());

@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+:root {
+  --clr-bodyAndChars: rgb(0, 171, 179);
+  --clr-borderAndTextsAndBtn: rgb(60, 64, 72);
+  --clr-bckText: rgb(234, 234, 234);
+  --clr-correct: rgb(85, 189, 73);
+  --clr-incorrect: rgb(238, 56, 62);
+  --clr-incorrectBck: rgb(255, 192, 203);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,13 +21,13 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #00ABB3;
+  background: var(--clr-bodyAndChars);
 }
 
 .wrapper {
   width: 770px;
   padding: 35px;
-  background: #3C4048;
+  background: var(--clr-borderAndTextsAndBtn);
   border-radius: 5px;
 }
 
@@ -31,8 +40,7 @@ body {
 .wrapper .contentBox {
   padding: 13px 22px 0;
   border-radius: 5px;
-  border: 1px solid #3C4048;
-  background: #EAEAEA;
+  background: var(--clr-bckText);
 }
 
 .contentBox .typingText {
@@ -49,7 +57,7 @@ body {
   text-align: justify;
   letter-spacing: 1px;
   word-break: break-all;
-  color: #3C4048;
+  color: var(--clr-borderAndTextsAndBtn);
 }
 
 .typingText p span {
@@ -57,7 +65,7 @@ body {
 }
 
 .typingText p span.active {
-  color: #00ABB3;
+  color: var(--clr-bodyAndChars);
 }
 
 .typingText p span.active::before {
@@ -68,7 +76,7 @@ body {
   height: 2px;
   width: 100%;
   opacity: 0;
-  background: #00ABB3;
+  background: var(--clr-bodyAndChars);
   animation: blink 1s ease-in-out infinite;
 }
 
@@ -79,15 +87,15 @@ body {
 }
 
 .typingText p span.correct {
-  color: #55bd49;
-  outline: 1px solid #EAEAEA;
+  color: var(--clr-correct);
+  outline: 1px solid var(--clr-bckText);
   border-radius: 4px;
 }
 
 .typingText p span.incorrect {
-  color: #ee383e;
-  background: #ffc0cb;
-  outline: 1px solid #EAEAEA;
+  color: var(--clr-incorrect);
+  background: var(--clr-incorrectBck);
+  outline: 1px solid var(--clr-bckText);
   border-radius: 4px;
 }
 
@@ -97,7 +105,7 @@ body {
   justify-content: space-between;
   margin-top: 17px;
   padding: 12px 0;
-  border-top: 1px solid #3C4048;
+  border-top: 1px solid var(--clr-borderAndTextsAndBtn);
 }
 
 .content button {
@@ -105,11 +113,11 @@ body {
   outline: none;
   width: 105px;
   padding: 8px 0;
-  color: #EAEAEA;
+  color: var(--clr-bckText);
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
-  background: #3C4048;
+  background: var(--clr-borderAndTextsAndBtn);
   transition: transform 0.3s ease;
 }
 
@@ -137,14 +145,14 @@ body {
 
 .showStats li p {
   font-size: 19px;
-  color: #3C4048;
+  color: var(--clr-borderAndTextsAndBtn);
 }
 
 .showStats li span {
   display: block;
   font-size: 20px;
   margin-left: 10px;
-  color: #3C4048;
+  color: var(--clr-borderAndTextsAndBtn);
 }
 
 .showStats li:not(:first-child) span {
