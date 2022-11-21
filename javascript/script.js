@@ -6,6 +6,8 @@ const timerTag = document.querySelector("#time span b");
 const mistakesTag = document.querySelector("#mistakes span");
 const wpmTag = document.querySelector("#wpm span"); //word per minute
 const cpmTag = document.querySelector("#cpm span");
+const tryAgainBtn = document.querySelector("button");
+
 let timer;
 let maxTime = 60;
 let timeLeft = maxTime;
@@ -19,6 +21,7 @@ let isTyping = 0;
 function randomParagraph() {
   //generates a random number that returns a text from the paragraphs array
   let randId = Math.floor(Math.random() * paragraphs.length);
+  typingText.innerHTML = "";
   /*
   taking a random text from the matrix separating all the characters from it 
   adding inside each character inside tag span and then adding all span inside 
@@ -28,7 +31,7 @@ function randomParagraph() {
     let spanTag = `<span>${span}</span>`;
     typingText.innerHTML += spanTag;
   });
-
+  typingText.querySelectorAll("span")[0].classList.add("active");
   //makes the input field focus on the keystroke or click event
   document.addEventListener("keydown", () => inputFiled.focus());
   typingText.addEventListener("click", () => inputFiled.focus());
@@ -93,3 +96,18 @@ inputFiled.addEventListener("input", () => {
     clearInterval(timer);
   }
 });
+
+tryAgainBtn.addEventListener("click", () => {
+  //resetting each variables and lements value to default;
+  randomParagraph();
+  inputFiled.value = "";
+  clearInterval(timer);
+  timeLeft = maxTime;
+  charPos = 0;
+  mistakes = 0;
+  isTyping = 0;
+  timerTag.innerText = timeLeft;
+  mistakesTag.innerText = mistakes;
+  wpmTag.innerText = 0;
+  cpmTag.innerText = 0;
+})
