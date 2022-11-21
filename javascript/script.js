@@ -2,8 +2,10 @@
 
 const typingText = document.querySelector("#typingText p");
 const inputFiled = document.querySelector("#inputField");
+const mistakesTag = document.querySelector("#mistakes span");
 
 let charPos = 0;
+let mistakes = 0;
 
 function randomParagraph() {
   //generates a random number that returns a text from the paragraphs array
@@ -30,20 +32,23 @@ randomParagraph();
 inputFiled.addEventListener("input", () => {
   const characters = typingText.querySelectorAll("span");
   let typedChar = inputFiled.value.split("")[charPos];
-  /*
-  if the user types the correct character, the tag will receive the class 
-  "correct", otherwise, it will receive the class "incorrect";
-  */
+  //if user hasn't entered any character or pressed backspace
   if (typedChar == null) {
-    //going back one position and removing the char class
-    charPos--;
+    charPos--; //going back one position and removing the char class
+    if (characters[charPos].classList.contains("incorrect")) {
+      //going back and remove the mistakes only if the charIndex span contains
+      //incorrect class
+      mistakes--;
+    }
     characters[charPos].classList.remove("correct", "incorrect")
   } else {
     if (characters[charPos].innerText === typedChar) {
-      // console.log("correct");
+      //if the character typed by the user and the character shown match, 
+      //add the correct class, 
       characters[charPos].classList.add("correct");
     } else {
-      // console.log("incorrect");
+      //else increment the mistakes and add the incorrect class
+      mistakes++;
       characters[charPos].classList.add("incorrect");
     }
 
@@ -53,4 +58,6 @@ inputFiled.addEventListener("input", () => {
   //remove the class to pass it to the next span
   characters.forEach(span => span.classList.remove("active"));
   characters[charPos].classList.add("active");
+
+  mistakesTag.innerText = mistakes;
 });
