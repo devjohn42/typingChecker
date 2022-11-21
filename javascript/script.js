@@ -2,10 +2,18 @@
 
 const typingText = document.querySelector("#typingText p");
 const inputFiled = document.querySelector("#inputField");
+const timerTag = document.querySelector("#time span b");
 const mistakesTag = document.querySelector("#mistakes span");
+
+let timer;
+let maxTime = 60;
+let timeLeft = maxTime;
+// let timer, maxTime = 60, timeLeft = maxTime;
 
 let charPos = 0;
 let mistakes = 0;
+let isTyping = 0;
+// let charPos = 0, mistakes = 0, isTyping = 0;
 
 function randomParagraph() {
   //generates a random number that returns a text from the paragraphs array
@@ -25,13 +33,23 @@ function randomParagraph() {
   typingText.addEventListener("click", () => inputFiled.focus());
 }
 
-
-
 randomParagraph();
 
 inputFiled.addEventListener("input", () => {
   const characters = typingText.querySelectorAll("span");
   let typedChar = inputFiled.value.split("")[charPos];
+  if (!isTyping) {
+    // when the timer is started it will not restart again with each key press
+    timer = setInterval(() => {
+      if (timeLeft > 0) {
+        timeLeft--;
+        timerTag.innerText = timeLeft;
+      } else {
+        clearInterval(timer);
+      }
+    }, 1000);
+    isTyping = true;
+  }
   //if user hasn't entered any character or pressed backspace
   if (typedChar == null) {
     charPos--; //going back one position and removing the char class
