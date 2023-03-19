@@ -6,7 +6,7 @@
 <hr>
 
 <h3>Make your try</h3>
-<button style="background-color: #424242; border:none; padding: 7px; border-radius: 5px;"><a style="color: #fff" href="https://typingchecker.netlify.app/">Typing Checker</a></button>
+<button style="background-color: #424242; border:none; padding: 7px; border-radius: 5px;"><a style="color: #fff; text-decoration: none;" href="https://typingchecker.netlify.app/">Typing Checker</a></button>
 <hr>
 
 <p>Don't forget to run the test and send me the result on twitter</p>
